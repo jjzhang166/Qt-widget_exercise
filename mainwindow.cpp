@@ -7,6 +7,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    this->setMouseTracking(true);
+    this->centralWidget()->setMouseTracking(true);
+
     testWid = NULL;
     testWid = new mySonWid();
 
@@ -60,11 +63,26 @@ void MainWindow::closeEvent(QCloseEvent *event)
     }
 }
 
+void MainWindow::mouseMoveEvent(QMouseEvent *event)
+{
+    int x = event->x();
+    int y = event->y();
+    if(NULL != testWid)
+    {
+        testWid->m_change_label("aaa",QPoint(x,y));
+        testWid->m_change_label("bbb",QPoint(x*2,y*2));
+        testWid->m_change_label("ccc",QPoint(x*3,y*3));
+    }
+
+}
+
 void MainWindow::OnPushButtonAddLabel()
 {
     if(NULL != testWid)
     {
-        testWid->m_add_lable();
+        testWid->m_add_lable("aaa",QPoint(0,0));
+        testWid->m_add_lable("bbb",QPoint(1,1));
+        testWid->m_add_lable("ccc",QPoint(2,2));
     }
 }
 

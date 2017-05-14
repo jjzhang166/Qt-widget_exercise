@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QPoint>
 #include <QEvent>
+#include <QMouseEvent>
 
 #include "mysonwid.h"
 
@@ -21,6 +22,8 @@ public:
     ~MainWindow();
 
     void closeEvent(QCloseEvent *);
+
+    void mouseMoveEvent(QMouseEvent*);
 
 private:
     Ui::MainWindow *ui;
